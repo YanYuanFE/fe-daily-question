@@ -1,11 +1,7 @@
 # fe-daily-question
 前端每日一题
   
-### [Javascript](javascript/index.md)
-  
-### [HTML](html/index.md)
-  
-### [after](arc/after.md)
+### [after](src/after.md)
   
 ### [throttle](src/throttle.md)
   
