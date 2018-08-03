@@ -71,3 +71,50 @@ app;
 window;
 
 ```
+以下代码输出什么？为什么？
+
+``` js
+var a = 1;
+function fn1() {
+  function fn3() {
+    function fn2() {
+      console.log(a);
+    }
+    var a;
+    fn2();
+    a = 4;
+  }
+  var a = 2;
+  return fn3;
+}
+
+var fn = fn1();
+fn() //
+```
+
+### answer
+
+输出undefined
+
+变量提升后
+
+``` js
+var a = 1;
+var fn;
+function fn1() {
+  function fn3() {
+    var a;
+    function fn2() {
+      console.log(a);
+    }
+    fn2();
+    a = 4;
+  }
+  a = 2;
+  return fn3;
+}
+
+fn = fn1();
+fn()
+
+```

@@ -59,3 +59,84 @@ function throttle(func, wait, options) {
 };
 
 ```
+
+写一个debounce函数，可以按照如下方式调用，实现的效果是：当连续滚动窗口时，滚动停下300ms后才执行print。
+
+### answer
+
+``` js
+function debounce(fn, time) {
+  var timer = null;
+  return function() {
+    clearTimeout(timer);
+    timer = setTimeout(fn, time);
+  }
+}
+
+function print() {
+  console.log('print');
+}
+
+window.addEventListener('scroll', debounce(print, 300)); 
+```
+
+写一个throttle函数，可以按照如下方式调用，实现的效果是：当连续滚动窗口时，莓100ms至多执行一次print。
+
+### answer
+
+``` js
+function throttle(fn, time) {
+  let start = 0;
+  return function() {
+    let now = +new Date();
+    if (now - start >= time) {
+      fn();
+      start = now;
+    }
+  }
+}
+
+function print() {
+  console.log('print');
+}
+
+window.addEventListener('scroll', throttle(print, 100)); 
+```
+
+写一个防抖函数
+
+``` js
+
+function debounce(func, delay) {
+  var timeout;
+  return function (e) {
+    var context = this, args = arguments;
+    timeout = setTimeout(function() {
+      func.apply(context, args);
+    }, delay);
+  };
+};
+```
+
+写一个节流函数
+
+``` js
+
+function throttle(fn, threshhold) {
+  var timeout;
+  var start = new Date;
+  var threshhold = threshhold || 160;
+  return function (e) {
+    var context = this, args = arguments, curr = new Date() - 0;
+    clearTimeout(timeout);
+    if (curr - start >= threshhold) {
+      func.apply(context, args);
+      start = curr;
+    } else {
+      timeout = setTimeout(function() {
+        func.apply(context, args);
+      }, threshhold);
+    } 
+  };
+};
+```

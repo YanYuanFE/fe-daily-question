@@ -1,6 +1,8 @@
 写一个execTime函数，参数，时间毫秒数，作用：什么都不做，但函数执行会耗时参数传递的毫秒数
 ex：
 
+// sleep
+
 
 ``` js
 
@@ -23,6 +25,24 @@ function execTime(t) {
 
   }
 }
+
+//  promise和生成器
+
+function resolveAfterDelay(time) {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve('resolved');
+    }, time);
+  })
+}
+
+async function asyncCall() {
+  console.log(1);
+  var result = await resolveAfterDelay(3000);
+  console.log(2);
+}
+
+asyncCall();
 
 
 ```
@@ -51,7 +71,7 @@ console.log(2)
 
 ``` js
 function execTime(t, callback) {
-  setTimeout(t,callback)
+  setTimeout(callback, t)
 }
 
 

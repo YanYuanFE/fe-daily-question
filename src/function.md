@@ -53,4 +53,20 @@ const fn =() => {
 }
 
 
+function fn() {
+  function fn2() {
+    function fn3() {
+      function fn4() {
+      }
+      fn4.toString = () => 'c';
+      return fn4();
+    }
+    fn3.toString = () => 'b';
+    return fn3();
+  }
+  fn2.toString = () => 'b';
+  return fn2();
+}
+
+
 ```

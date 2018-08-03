@@ -113,3 +113,26 @@ removeDuplicates(nums);
 console.log(nums);
 
 ```
+
+数组循环for和forEach的区别：
+
+``` js
+for可以跳出循环，forEach会一直循环，无法return
+
+const check = () => {
+  [1,2,3].forEach(item => {
+    console.log(item); 
+    if(item === 2){return item}
+  })   
+}
+const check1 = () => {
+  const arr = [1,2,3];
+  for(let i = 0; i< arr.length; i++) {
+    console.log(arr[i]); 
+    if(arr[i] === 2){
+      return arr[i]
+    }
+  }     
+}
+
+```
