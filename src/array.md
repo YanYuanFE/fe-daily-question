@@ -136,3 +136,18 @@ const check1 = () => {
 }
 
 ```
+
+Array.filter的内部原理
+
+``` js
+var arr = [0, 1, 2];
+
+arr[10] = 10;
+
+arr.filter((x) => x === undefined);
+
+输出 []
+
+因为Array.filter运行时会检测数组下标是否存在，不存在则跳过
+
+```
